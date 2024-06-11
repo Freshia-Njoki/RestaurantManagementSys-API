@@ -31,3 +31,12 @@ export const deleteRestaurantService = async (id: number) => {
     await db.delete(RestaurantsTable).where(eq(RestaurantsTable.id, id))
     return "Restaurant deleted successfully";
 }
+
+
+//extending functionality beyond CRUD operations 
+// Fetch all restaurants in a specific city
+export const getRestaurantsInCityService = async (cityId: number): Promise<TSRestaurant[] | null> => {
+    return await db.query.RestaurantsTable.findMany({
+        where: eq(RestaurantsTable.city_id, cityId)
+    });
+};

@@ -2,20 +2,21 @@ import { Hono } from "hono";
 import { listOrders, getOrder, createOrder, updateOrder, deleteOrder } from "./orders.controller"
 import { zValidator } from "@hono/zod-validator";
 import { orderSchema } from "../validators";
+import { adminRoleAuth,userRoleAuth } from "../middleware/bearAuth";
 export const ordersRouter = new Hono();
 
 //get all Orders     api/Orders
-ordersRouter.get("/orders", listOrders);
+ordersRouter.get("/orders",adminRoleAuth, listOrders);
 //get a single Orders    api/Orders/1
-ordersRouter.get("/orders/:id", getOrder)
+ordersRouter.get("/orders/:id",adminRoleAuth, getOrder)
 // create a Orders 
-ordersRouter.post("/orders", zValidator('json', orderSchema, (result, c) => {
+ordersRouter.post("/orders",userRoleAuth, zValidator('json', orderSchema, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)
     }
 }), createOrder)
-//update a Orders
-ordersRouter.put("/orders/:id", updateOrder)
+//update  Orders
+ordersRouter.put("/orders/:id",userRoleAuth, updateOrder)
 
-ordersRouter.delete("/orders/:id", deleteOrder)
+ordersRouter.delete("/orders/:id",userRoleAuth, deleteOrder)
 

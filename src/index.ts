@@ -7,6 +7,7 @@ import { trimTrailingSlash } from 'hono/trailing-slash'
 import { timeout } from 'hono/timeout'
 import { HTTPException } from 'hono/http-exception'
 import { prometheus } from '@hono/prometheus'
+import { html, raw } from 'hono/html'
 
 import { userRouter } from './users/users.router'
 import { stateRouter } from './state/state.router'
@@ -44,6 +45,14 @@ app.use('*', registerMetrics)
 
 
 // default route
+app.get('/', (c) => {
+  return c.html(
+    html`
+      <h1>Welcome to Restaurant Management API!</h1>
+      <li>Feel free to query my API😎</li>`
+  )
+})
+
 app.get('/ok', (c) => {
   return c.text('The server is running📢😏😏😏!')
 })

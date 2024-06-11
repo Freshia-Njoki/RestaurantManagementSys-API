@@ -7,17 +7,17 @@ import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 export const userRouter = new Hono();
 
 //get all users      api/users
-userRouter.get("/users", userRoleAuth, listUsers);
+userRouter.get("/users",adminRoleAuth, listUsers);
 //get a single user    api/users/1
-userRouter.get("/users/:id",adminRoleAuth, getUser)
+userRouter.get("/users/:id",userRoleAuth, getUser)
 // create a user 
-userRouter.post("/users",adminRoleAuth, zValidator('json', userSchema, (result, c) => {
+userRouter.post("/users",userRoleAuth, zValidator('json', userSchema, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)
     }
 }), createUser)
 //update a user
-userRouter.put("/users/:id", updateUser)
+userRouter.put("/users/:id", userRoleAuth, updateUser)
 
-userRouter.delete("/users/:id", deleteUser)
+userRouter.delete("/users/:id", userRoleAuth,  deleteUser)
 

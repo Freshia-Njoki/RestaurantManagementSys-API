@@ -31,3 +31,12 @@ export const deletemenuItemService = async (id: number) => {
     await db.delete(MenuItemsTable).where(eq(MenuItemsTable.id, id))
     return "menu deleted successfully";
 }
+
+
+//extend functions
+// Fetch all active menu items
+export const getActiveMenuItemsService = async (): Promise<TSMenuItem[] | null> => {
+    return await db.query.MenuItemsTable.findMany({
+        where: eq(MenuItemsTable.active, true)
+    });
+};

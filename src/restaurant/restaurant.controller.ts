@@ -1,6 +1,6 @@
 
 import { Context } from "hono";
-import { restaurantService, getRestaurantService, createRestaurantService, updateRestaurantService, deleteRestaurantService } from "./restaurant.services";
+import { restaurantService, getRestaurantService, getRestaurantsInCityService, createRestaurantService, updateRestaurantService, deleteRestaurantService } from "./restaurant.services";
 
 export const listRestaurants = async (c: Context) => {
     try {
@@ -79,3 +79,13 @@ export const deleteRestaurant = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+export const listRestaurantsInCity = async (c: Context) => {
+    const cityId = parseInt(c.req.param("cityId"));
+    if (isNaN(cityId)) return c.text("Invalid city ID", 400);
+
+    const data = await getRestaurantsInCityService(cityId);
+    if (!data) return c.text("No restaurants found", 404);
+
+    return c.json(data, 200);
+};
