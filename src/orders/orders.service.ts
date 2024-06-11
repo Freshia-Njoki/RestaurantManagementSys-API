@@ -1,0 +1,33 @@
+import { eq } from "drizzle-orm";
+import db from "../drizzle/db";
+import { TIOrder, TSOrder, OrdersTable } from "../drizzle/schema";
+
+export const OrdersService = async (limit?: number): Promise<TSOrder[] | null> => {
+    if (limit) {
+        return await db.query.OrdersTable.findMany({
+            limit: limit
+        });
+    }
+    return await db.query.OrdersTable.findMany();
+}
+
+export const getOrderService = async (id: number): Promise<TIOrder | undefined> => {
+    return await db.query.OrdersTable.findFirst({
+        where: eq(OrdersTable.id, id)
+    })
+}
+
+export const createOrderService = async (Order: TIOrder) => {
+    await db.insert(OrdersTable).values(Order)
+    return "Order created successfully";
+}
+
+export const updateOrderService = async (id: number, Order: TIOrder) => {
+    await db.update(OrdersTable).set(Order).where(eq(OrdersTable.id, id))
+    return "Order updated successfully";
+}
+
+export const deleteOrderService = async (id: number) => {
+    await db.delete(OrdersTable).where(eq(OrdersTable.id, id))
+    return "Order deleted successfully";
+}

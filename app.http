@@ -1,0 +1,514 @@
+
+GET http://localhost:8000/api/ok/
+
+###
+GET http://localhost:8000/api/timeout
+
+###
+
+GET http://localhost:8000/api/users?limit=4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MDM0ODYxfQ.3eygKECkRq2NuKTPyai6Wt4rhHuFjfqP8Eo8GPqFoHU
+
+###
+
+GET http://localhost:8000/api/metrics
+
+###
+
+GET http://localhost:8000/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MDM0ODYxfQ.3eygKECkRq2NuKTPyai6Wt4rhHuFjfqP8Eo8GPqFoHU
+
+###
+GET http://localhost:8000/api/users/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODAzNTYwM30.ClY6-FFRsWtpzTunL0DX_t7LmGiNKq7MoJN3jNHx-RE
+###
+
+POST http://localhost:8000/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODAzNTYwM30.ClY6-FFRsWtpzTunL0DX_t7LmGiNKq7MoJN3jNHx-RE
+Content-Type: application/json
+
+{
+   
+    "name": "Grace",
+    "contact_phone": "+2547869583",
+    "phone_verified": true,
+    "email": "grace@gmail.com",
+    "email_verified": false,
+    "confirmation_code": "SFGHGVCGHJ4E"
+}
+
+###
+
+PUT http://localhost:8000/api/users/2
+Content-Type: application/json
+
+{
+    "name": "Kevin"
+}
+###
+DELETE http://localhost:8000/api/users/2
+
+###
+
+GET http://localhost:8000/api/states
+
+###
+
+POST http://localhost:8000/api/states
+Content-Type: application/json
+
+{
+   
+    "name": "USA",
+    "code": "5344443",
+    "city": "NewYork"
+}
+
+###
+
+PUT http://localhost:8000/api/states/1
+Content-Type: application/json
+
+{
+    "name": "USAA"
+}
+###
+DELETE http://localhost:8000/api/states/1
+
+###
+
+GET http://localhost:8000/api/city
+
+###
+
+POST http://localhost:8000/api/city
+Content-Type: application/json
+
+{
+   
+    "name": "USA",
+    "state_id": 1,
+    "address": "12334 st",
+    "state": "New york",
+    "restaurant": "Chick-fil-A"
+}
+
+###
+
+PUT http://localhost:8000/api/city/2
+Content-Type: application/json
+
+{
+    "name": "USAA"
+}
+###
+DELETE http://localhost:8000/api/city/2
+
+###
+
+GET http://localhost:8000/api/restaurants
+
+###
+
+POST http://localhost:8000/api/restaurants
+Content-Type: application/json
+
+{
+     "name": "Delicious Bistro",
+  "street_address": "123 Main Street",
+  "zip_code": "98101",
+  "city_id": 2,
+  "menu_item": "Spaghetti Carbonara",
+  "orders": "Pending",
+  "city": "Seattle",
+  "restaurant_owner": "John Doe"
+}
+
+###
+
+PUT http://localhost:8000/api/restaurants/2
+Content-Type: application/json
+
+{
+    "name": "Bistro"
+}
+###
+DELETE http://localhost:8000/api/restaurants/2
+
+###
+
+
+GET http://localhost:8000/api/category
+
+###
+
+POST http://localhost:8000/api/category
+Content-Type: application/json
+
+{
+     "name": "Delicious Bistro",
+  "menu_item": "123 Main Street"
+}
+
+###
+
+PUT http://localhost:8000/api/category/2
+Content-Type: application/json
+
+{
+    "name": "Bistro"
+}
+###
+DELETE http://localhost:8000/api/category/1
+
+###
+
+
+GET http://localhost:8000/api/menuItem
+
+###
+
+POST http://localhost:8000/api/menuItem
+Content-Type: application/json
+
+{
+     "name": "Delicious Bistro",
+  "restaurant_id": 2,
+  "category_id": 1,
+  "description": "pizza",
+  "ingredients": "served while hot",
+  "active":true
+}
+
+###
+
+PUT http://localhost:8000/api/menuItem/2
+Content-Type: application/json
+
+{
+    "name": "Bistro"
+}
+###
+DELETE http://localhost:8000/api/menuItem/2
+
+###
+
+GET http://localhost:8000/api/address
+
+###
+
+POST http://localhost:8000/api/address
+Content-Type: application/json
+
+{
+    "street_address_1": "huruma",
+    "street_address_2": "123 main st",
+    "zip_code": "r5trfg",
+    "delivery_instructions": "near petrol station",
+    "user_id":1,
+    "city_id": 2
+}
+
+###
+# not working:PUT
+PUT http://localhost:8000/api/address/1
+Content-Type: application/json
+
+{
+    "name": "hurumaa"
+}
+###
+DELETE http://localhost:8000/api/address/2
+
+###
+
+GET http://localhost:8000/api/comment
+
+###
+
+POST http://localhost:8000/api/comment
+Content-Type: application/json
+
+{
+    "order_id": 5,
+    "user_id": 1,
+    "comment_text": "nice meal",
+    "is_complaint": false,
+    "is_praise":true
+}
+
+###
+PUT http://localhost:8000/api/comment/1
+Content-Type: application/json
+
+{
+    "is_complaint": true
+}
+###
+DELETE http://localhost:8000/api/comment/2
+
+###
+GET http://localhost:8000/api/orders
+
+###
+
+POST http://localhost:8000/api/orders
+Content-Type: application/json
+
+{
+    "restaurant_id": 2,
+    "delivery_address_id": 1,
+    "user_id": 1,
+    "driver_id": 1,
+    "price":2344.50,
+    "order_menu_item":"pizza",
+    "order_status":"delivery",
+    "restaurant":"Resho hotel"
+}
+
+###
+PUT http://localhost:8000/api/orders/3
+Content-Type: application/json
+
+{
+    "restaurant": "Kevo hotel"
+}
+###
+DELETE http://localhost:8000/api/orders/3
+
+###
+GET http://localhost:8000/api/driver
+
+###
+
+POST http://localhost:8000/api/driver
+Content-Type: application/json
+
+{
+    "car_make": "toyota",
+    "car_model": "Volvo",
+    "car_year": 20023,
+    "user_id": 1,
+    "online": true,
+    "delivering": true,
+    "users":"Resho",
+    "orders":"order 1"
+}
+
+###
+PUT http://localhost:8000/api/driver/1
+Content-Type: application/json
+
+{
+    "car_model": "Subaru"
+}
+###
+DELETE http://localhost:8000/api/driver/2
+
+###
+GET http://localhost:8000/api/orderMenuItems
+
+###
+
+POST http://localhost:8000/api/orderMenuItems
+Content-Type: application/json
+
+{
+     "order_id": 5,
+    "menu_item_id": 3,
+    "quantity": 20,
+    "item_price": 3000,
+    "price": 23445.34,
+    "comment": "fast delivery",
+    "users":"Resho",
+    "menu_item":"shoe",
+    "orders":"order 1"
+}
+
+###
+PUT http://localhost:8000/api/orderMenuItems/3
+Content-Type: application/json
+
+{
+    "quantity": "30"
+}
+###
+DELETE http://localhost:8000/api/orderMenuItems/2
+
+###
+GET http://localhost:8000/api/orderStatus
+
+###
+
+POST http://localhost:8000/api/orderStatus
+Content-Type: application/json
+
+{
+     "order_id": 5,
+    "status_catalog_id": 1,
+    "orders": "shoes",
+    "status_catalog": "available"
+}
+
+###
+PUT http://localhost:8000/api/orderStatus/5
+Content-Type: application/json
+
+{
+    "orders": "clothes"
+}
+###
+DELETE http://localhost:8000/api/orderStatus/4
+
+###
+GET http://localhost:8000/api/restuarantOwner
+
+###
+
+POST http://localhost:8000/api/restuarantOwner
+Content-Type: application/json
+
+{
+     "restaurant_id": 2,
+    "owner_id": 1,
+    "users": "Freshia",
+    "restaurant": "Resho hotel"
+}
+
+###
+PUT http://localhost:8000/api/restuarantOwner/1
+Content-Type: application/json
+
+{
+    "restaurant": "Kevin hotel"
+}
+###
+DELETE http://localhost:8000/api/restuarantOwner/1
+
+###
+
+GET http://localhost:8000/api/statusCatalog
+
+###
+
+POST http://localhost:8000/api/statusCatalog
+Content-Type: application/json
+
+{
+     "name": "utensils",
+    "order_status": "delivered"
+}
+
+###
+PUT http://localhost:8000/api/statusCatalog/1
+Content-Type: application/json
+
+{
+    "name": "shoes"
+}
+###
+DELETE http://localhost:8000/api/statusCatalog/1
+
+###Authorization and Authentication
+
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "username": "Waruitha",
+    "password": "pass123"
+}
+
+### 
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "Waruitha",
+    "password": "pass123"
+}
+
+###admin
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "Njoki",
+    "userId": 3,
+    "password": "pass123",
+    "role": "admin"
+}
+
+### 
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "Njoki",
+    "password": "pass123"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
