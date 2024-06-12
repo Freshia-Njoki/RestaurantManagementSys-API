@@ -38,5 +38,4 @@ export const filterOrderService = async (id: number) => {
         order_menu_item: OrdersTable.order_menu_item,
         OrderStatusTable: OrderStatusTable.status_catalog
     }).from(OrdersTable).rightJoin(OrderStatusTable, eq(OrdersTable.id, OrderStatusTable.order_id))
- 
 }

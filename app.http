@@ -467,6 +467,8 @@ GET http://localhost:8000/api/getRestaurantsInfo/2
 GET http://localhost:8000/api/addressinfo
 ###
 GET http://localhost:8000/api/filterOrderInfo/5
+###
+GET http://localhost:8000/api/categoryInfo/1
 
 
 

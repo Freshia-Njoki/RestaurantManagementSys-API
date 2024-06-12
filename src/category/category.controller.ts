@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { CategoryService, getCategoryService, createCategoryService, updateCategoryService, deleteCategoryService } from "./category.service";
+import { CategoryService, getCategoryService, createCategoryService, updateCategoryService, deleteCategoryService, filterCategoryService } from "./category.service";
 
 export const listCategories = async (c: Context) => {
     try {
@@ -77,4 +77,15 @@ export const deleteCategory = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+export const filterCategoryInfo = async(c:Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    const categoryInfo = await filterCategoryService(id);
+    if (categoryInfo == undefined) {
+        return c.text("Order not found", 404);
+    }
+    return c.json(categoryInfo, 200);
 }

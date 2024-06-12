@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { TICategory, TSCategory, CategoryTable } from "../drizzle/schema";
+import { TICategory, TSCategory, CategoryTable, MenuItemsTable } from "../drizzle/schema";
 
 export const CategoryService = async (limit?: number): Promise<TSCategory[] | null> => {
     if (limit) {
@@ -30,4 +30,12 @@ export const updateCategoryService = async (id: number, Category: TICategory) =>
 export const deleteCategoryService = async (id: number) => {
     await db.delete(CategoryTable).where(eq(CategoryTable.id, id))
     return "Category deleted successfully";
+}
+
+
+export const filterCategoryService = async (id: number) => {
+    return await db.select({
+        CategoryName: CategoryTable.name,
+        MenuItem: MenuItemsTable.description
+    }).from(CategoryTable).rightJoin(MenuItemsTable, eq(CategoryTable.id, MenuItemsTable.category_id))
 }

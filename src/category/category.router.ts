@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listCategories, getCategory, createCategory, updateCategory, deleteCategory } from "./category.controller"
+import { listCategories, getCategory, createCategory, updateCategory, deleteCategory, filterCategoryInfo } from "./category.controller"
 import { zValidator } from "@hono/zod-validator";
 import { categorySchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,6 @@ categoryRouter.post("/category",adminRoleAuth, zValidator('json', categorySchema
 categoryRouter.put("/category/:id",adminRoleAuth, updateCategory)
 
 categoryRouter.delete("/category/:id",adminRoleAuth, deleteCategory)
+categoryRouter.get("/categoryInfo/:id", filterCategoryInfo)
 
 //https:domai.com/api/categorys?limit=10
