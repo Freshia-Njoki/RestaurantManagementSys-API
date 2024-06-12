@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { CityService, getCityService, createCityService, updateCityService, deleteCityService } from "./city.service";
+import { CityService, getCityService, createCityService, updateCityService, deleteCityService, filterCityService} from "./city.service";
 
 export const listCities = async (c: Context) => {
     try {
@@ -77,4 +77,15 @@ export const deleteCity = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+export const filterCityInfo = async(c:Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    const cityInfo = await filterCityService(id);
+    if (cityInfo == undefined) {
+        return c.text("Order not found", 404);
+    }
+    return c.json(cityInfo, 200);
 }
