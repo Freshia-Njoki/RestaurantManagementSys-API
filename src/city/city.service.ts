@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import db from "../drizzle/db";
 import {
   TICity,
@@ -40,13 +40,25 @@ export const deleteCityService = async (id: number) => {
 
 export const filterCityService = async (id: number) => {
   return await db.query.CitiesTable.findMany({
+    columns: {
+      address: false
+    },
     with: {
       state: {
-        with:{
-            city:true
+        columns: {
+          name: true
+        },
+        with: {
+          city: {
+            columns: {
+              name: true,
+              restaurant: true
+            }
+          }
         }
-
       }
     },
   });
-};
+
+
+}

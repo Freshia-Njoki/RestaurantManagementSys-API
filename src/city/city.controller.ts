@@ -85,7 +85,7 @@ export const filterCityInfo = async(c:Context) => {
 
     const cityInfo = await filterCityService(id);
     if (cityInfo == undefined) {
-        return c.text("Order not found", 404);
+        return c.text("city not found", 404);
     }
     return c.json(cityInfo, 200);
 }
