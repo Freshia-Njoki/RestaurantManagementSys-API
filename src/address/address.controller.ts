@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { addressService, getAddressService, createAddressService, updateAddressService, deleteAddressService } from "./address.service";
+import { addressService, getAddressService, createAddressService, updateAddressService, deleteAddressService, getAddressInfo } from "./address.service";
 
 export const listAddresss = async (c: Context) => {
     try {
@@ -78,3 +78,18 @@ export const deleteAddress = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+export const addressInfo = async (c: Context) => {
+    try {
+    //   const id = parseInt(c.req.param("id"));
+    //   if (isNaN(id)) return c.text("Invalid ID", 400);
+  
+      const address = await getAddressInfo();
+      if (address == undefined) {
+          return c.text("address info not found", 404);
+      }
+      return c.json(address, 200);
+    } catch (error:any) {
+      return c.json({error:error ?.message},400)
+    }
+  };

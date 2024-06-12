@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listRestaurants, getRestaurant, createRestaurant, updateRestaurant, deleteRestaurant, listRestaurantsInCity } from "./restaurant.controller"
+import { listRestaurants, getRestaurant, createRestaurant, updateRestaurant, deleteRestaurant, RestaurantsInfo } from "./restaurant.controller"
 import { zValidator } from "@hono/zod-validator";
 import { restaurantSchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,5 @@ restaurantRouter.post("/restaurants",adminRoleAuth, zValidator('json', restauran
 restaurantRouter.put("/restaurants/:id",adminRoleAuth, updateRestaurant)
 
 restaurantRouter.delete("/restaurants/:id",adminRoleAuth, deleteRestaurant)
-restaurantRouter.get("/getRestaurantsInfo/:id", listRestaurantsInCity)
+restaurantRouter.get("/getRestaurantsInfo/:id", RestaurantsInfo)
 

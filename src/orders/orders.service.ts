@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { TIOrder, TSOrder, OrdersTable } from "../drizzle/schema";
+import { TIOrder, TSOrder, OrdersTable, OrderStatusTable } from "../drizzle/schema";
 
 export const OrdersService = async (limit?: number): Promise<TSOrder[] | null> => {
     if (limit) {
@@ -30,4 +30,13 @@ export const updateOrderService = async (id: number, Order: TIOrder) => {
 export const deleteOrderService = async (id: number) => {
     await db.delete(OrdersTable).where(eq(OrdersTable.id, id))
     return "Order deleted successfully";
+}
+
+
+export const filterOrderService = async (id: number) => {
+    return await db.select({
+        order_menu_item: OrdersTable.order_menu_item,
+        OrderStatusTable: OrderStatusTable.status_catalog
+    }).from(OrdersTable).rightJoin(OrderStatusTable, eq(OrdersTable.id, OrderStatusTable.order_id))
+ 
 }

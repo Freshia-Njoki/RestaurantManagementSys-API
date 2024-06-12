@@ -32,3 +32,12 @@ export const deleteAddressService = async (id: number) => {
     await db.delete(AddressesTable).where(eq(AddressesTable.id, id))
     return "Address deleted successfully";
 }
+
+
+export const getAddressInfo = async (): Promise<TSAddress[] | null> => {
+    const results:any = await db.select({
+        delivery_instructions: AddressesTable.delivery_instructions,
+        address: AddressesTable.street_address_1
+    }).from(AddressesTable);
+     return results
+};

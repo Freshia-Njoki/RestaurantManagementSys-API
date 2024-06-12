@@ -463,7 +463,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUi
 ###additional operations
 GET http://localhost:8000/api/getRestaurantsInfo/2
 
-
+###
+GET http://localhost:8000/api/addressinfo
+###
+GET http://localhost:8000/api/filterOrderInfo/5
 
 
 

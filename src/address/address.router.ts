@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listAddresss, getAddress, createAddress, updateAddress, deleteAddress } from "./address.controller"
+import { listAddresss, getAddress, createAddress, updateAddress, deleteAddress, addressInfo } from "./address.controller"
 import { zValidator } from "@hono/zod-validator";
 import { addressSchema } from "../validators";
 import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,6 @@ addressRouter.post("/address", adminRoleAuth, zValidator('json', addressSchema, 
 addressRouter.put("/address/:id",adminRoleAuth, updateAddress)
 
 addressRouter.delete("/address/:id", adminRoleAuth,deleteAddress)
+addressRouter.get("/addressinfo", addressInfo)
 
 //https:domai.com/api/addresss?limit=10

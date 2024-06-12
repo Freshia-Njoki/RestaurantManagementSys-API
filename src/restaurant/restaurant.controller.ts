@@ -85,16 +85,16 @@ export const deleteRestaurant = async (c: Context) => {
   }
 };
 
-export const listRestaurantsInCity = async (c: Context) => {
+export const RestaurantsInfo = async (c: Context) => {
   try {
     const id = parseInt(c.req.param("id"));
     if (isNaN(id)) return c.text("Invalid ID", 400);
 
-    const Menu = await getRestaurantsInfo(id);
-    if (Menu == undefined) {
-        return c.text("Menu not found", 404);
+    const restaurant = await getRestaurantsInfo(id);
+    if (restaurant == undefined) {
+        return c.text("Restaurant info not found", 404);
     }
-    return c.json(Menu, 200);
+    return c.json(restaurant, 200);
   } catch (error:any) {
     return c.json({error:error ?.message},400)
   }

@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listOrders, getOrder, createOrder, updateOrder, deleteOrder } from "./orders.controller"
+import { listOrders, getOrder, createOrder, updateOrder, deleteOrder, filterOrderInfo } from "./orders.controller"
 import { zValidator } from "@hono/zod-validator";
 import { orderSchema } from "../validators";
 import { adminRoleAuth,userRoleAuth } from "../middleware/bearAuth";
@@ -19,4 +19,5 @@ ordersRouter.post("/orders",userRoleAuth, zValidator('json', orderSchema, (resul
 ordersRouter.put("/orders/:id",userRoleAuth, updateOrder)
 
 ordersRouter.delete("/orders/:id",userRoleAuth, deleteOrder)
+ordersRouter.get("/filterOrderInfo/:id",filterOrderInfo)
 
