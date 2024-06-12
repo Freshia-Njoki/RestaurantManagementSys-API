@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import {TIRestaurant,TSRestaurant, RestaurantsTable } from "../drizzle/schema";
+import { Context } from "hono";
 
 export const restaurantService = async (limit?: number): Promise<TSRestaurant[] | null> => {
     if (limit) {
@@ -35,8 +36,13 @@ export const deleteRestaurantService = async (id: number) => {
 
 //extending functionality beyond CRUD operations 
 // Fetch all restaurants in a specific city
-export const getRestaurantsInCityService = async (cityId: number): Promise<TSRestaurant[] | null> => {
-    return await db.query.RestaurantsTable.findMany({
-        where: eq(RestaurantsTable.city_id, cityId)
-    });
+export const getRestaurantsInfo = async (id:number): Promise<TSRestaurant[] | null> => {
+    const results:any = await db.select({
+        Restaurant_name: RestaurantsTable.name,
+        city: RestaurantsTable.city,
+        restaurant_owner: RestaurantsTable.restaurant_owner
+        
+    }).from(RestaurantsTable).where(eq(RestaurantsTable.id, id));
+     return results
 };
+

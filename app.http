@@ -110,7 +110,7 @@ DELETE http://localhost:8000/api/city/2
 
 ###
 
-GET http://localhost:8000/api/restaurants
+GET http://localhost:8000/api/restaurants/2
 
 ###
 
@@ -460,6 +460,8 @@ GET http://localhost:8000/api/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODExNTgyM30.gmnnSHkamJ3rVuQ-0_oCmKhf6XfukqE65cwdmJD9F3w
 
 
+###additional operations
+GET http://localhost:8000/api/getRestaurantsInfo/2
 
 
 
