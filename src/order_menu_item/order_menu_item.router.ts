@@ -18,7 +18,7 @@ orderMenuItemRouter.post("/orderMenuItems",userRoleAuth, zValidator('json', orde
 //update a OrderMenuItem
 orderMenuItemRouter.put("/orderMenuItems/:id",userRoleAuth, updateOrderMenuItem)
 
-orderMenuItemRouter.delete("/orderMenuItems/:id",userOrAdminRoleAuth, deleteOrderMenuItem)
-orderMenuItemRouter.get("/menuOrdersInfo",getMenuOrdersInfo)
+orderMenuItemRouter.delete("/orderMenuItems/:id",userRoleAuth, deleteOrderMenuItem)
+orderMenuItemRouter.get("/menuOrdersInfo",userOrAdminRoleAuth, getMenuOrdersInfo)
 
 //https:domai.com/api/OrderMenuItems?limit=10

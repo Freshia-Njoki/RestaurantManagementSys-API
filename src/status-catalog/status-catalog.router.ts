@@ -2,13 +2,13 @@ import { Hono } from "hono";
 import { listStatusCatalogs, getStatusCatalog, createStatusCatalog, updateStatusCatalog, deleteStatusCatalog, getMoreStatusCatalogInfo} from "./status-catalog.controller"
 import { zValidator } from "@hono/zod-validator";
 import { statusCatalogSchema } from "../validators";
-import { adminRoleAuth } from "../middleware/bearAuth";
+import { adminRoleAuth,userOrAdminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 export const statusCatalogRouter = new Hono();
 
 //get all StatusCatalog     api/StatusCatalog
-statusCatalogRouter.get("/statusCatalog", adminRoleAuth, listStatusCatalogs);
+statusCatalogRouter.get("/statusCatalog", userOrAdminRoleAuth, listStatusCatalogs);
 //get a single StatusCatalog    api/StatusCatalog/1
-statusCatalogRouter.get("/statusCatalog/:id", getStatusCatalog)
+statusCatalogRouter.get("/statusCatalog/:id",userRoleAuth, getStatusCatalog)
 // create a StatusCatalog 
 statusCatalogRouter.post("/statusCatalog",adminRoleAuth, zValidator('json', statusCatalogSchema, (result, c) => {
     if (!result.success) {
@@ -19,6 +19,6 @@ statusCatalogRouter.post("/statusCatalog",adminRoleAuth, zValidator('json', stat
 statusCatalogRouter.put("/statusCatalog/:id", adminRoleAuth, updateStatusCatalog)
 
 statusCatalogRouter.delete("/statusCatalog/:id",adminRoleAuth, deleteStatusCatalog)
-statusCatalogRouter.get("/statusCatalog", getMoreStatusCatalogInfo)
+statusCatalogRouter.get("/statusCatalog",userOrAdminRoleAuth, getMoreStatusCatalogInfo)
 
 //https:domai.com/api/StatusCatalog?limit=10

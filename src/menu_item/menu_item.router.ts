@@ -2,13 +2,13 @@ import { Hono } from "hono";
 import { listmenuItem, getMenu, createMenu, updateMenu, deleteMenu, listActiveMenuItems, getMoreMenuInfo} from "./menu_item.controller"
 import { zValidator } from "@hono/zod-validator";
 import { menuItemSchema } from "../validators";
-import { adminRoleAuth } from "../middleware/bearAuth";
+import { adminRoleAuth,userOrAdminRoleAuth } from "../middleware/bearAuth";
 export const menuRouter = new Hono();
 
 //get all menuItem      api/menuItem
-menuRouter.get("/menuItem", listmenuItem);
+menuRouter.get("/menuItem",userOrAdminRoleAuth, listmenuItem);
 //get a single Menu    api/menuItem/1
-menuRouter.get("/menuItem/:id", getMenu)
+menuRouter.get("/menuItem/:id",userOrAdminRoleAuth, getMenu)
 // create a Menu 
 menuRouter.post("/menuItem",adminRoleAuth, zValidator('json', menuItemSchema, (result, c) => {
     if (!result.success) {
@@ -19,7 +19,7 @@ menuRouter.post("/menuItem",adminRoleAuth, zValidator('json', menuItemSchema, (r
 menuRouter.put("/menuItem/:id",adminRoleAuth, updateMenu)
 
 menuRouter.delete("/menuItem/:id",adminRoleAuth, deleteMenu)
-menuRouter.get("/activeMenuItems",listActiveMenuItems)
-menuRouter.get("/menuInfo",getMoreMenuInfo)
+menuRouter.get("/activeMenuItems",userOrAdminRoleAuth, listActiveMenuItems)
+menuRouter.get("/menuInfo",userOrAdminRoleAuth, getMoreMenuInfo)
 
 //https:domai.com/api/menuItem?limit=10

@@ -430,7 +430,7 @@ POST http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "Njoki",
+    "username": "Waruitha",
     "password": "pass123"
 }
 
@@ -439,42 +439,57 @@ GET http://localhost:8000/api/orderMenuItems
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjc3MzkwfQ.dCBiIsX46RJLxVFo7pzqYElypDqNS842nihPJBxpBXk
 ###
 GET http://localhost:8000/api/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjM0MTI3fQ.hZfXmEDCm96oEZvP0kWSjfXZ7_HLkRCau8EiZBimZuo
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###additional operations
 GET http://localhost:8000/api/getRestaurantsInfo/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 
 ###
 GET http://localhost:8000/api/addressinfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/filterOrderInfo/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjg3NTU0fQ.w8Tqd0vSr059UxqGTlhBFIVCj6ui_zGJGM_lOwkYcd8
 ###
 GET http://localhost:8000/api/categoryInfo/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/cityInfo/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/commentInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/driverInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/activeMenuItems
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/menuInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/menuOrdersInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/OrderInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/orderStatusInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/moreRestaurantsInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/restuarantOwnerInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 GET http://localhost:8000/api/statesInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 ###
 
 GET http://localhost:8000/api/usersInfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOam9raSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODI4NzIxOX0.N_SacPZ5rUbF3QwH_5kwbNHJ7tA56yrBSSS9RF8Nyv0
 
 
 
