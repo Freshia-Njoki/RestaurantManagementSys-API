@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listOrderStatus, getOrderStatus, createOrderStatus, updateOrderStatus, deleteOrderStatus } from "./orders-status.controller"
+import { listOrderStatus, getOrderStatus, createOrderStatus, updateOrderStatus, deleteOrderStatus, getMoreOrderStatusInfo } from "./orders-status.controller"
 import { zValidator } from "@hono/zod-validator";
 import { orderStatusSchema } from "../validators";
 import { adminRoleAuth,userRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,6 @@ orderStatusRouter.post("/orderStatus",adminRoleAuth, zValidator('json', orderSta
 orderStatusRouter.put("/orderStatus/:id",adminRoleAuth, updateOrderStatus)
 
 orderStatusRouter.delete("/orderStatus/:id",adminRoleAuth, deleteOrderStatus)
+orderStatusRouter.get("/orderStatusInfo",getMoreOrderStatusInfo)
 
 //https:domai.com/api/OrderStatus?limit=10

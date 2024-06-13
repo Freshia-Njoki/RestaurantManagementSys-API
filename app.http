@@ -464,6 +464,8 @@ GET http://localhost:8000/api/menuInfo
 GET http://localhost:8000/api/menuOrdersInfo
 ###
 GET http://localhost:8000/api/OrderInfo
+###
+GET http://localhost:8000/api/orderStatusInfo
 
 
 

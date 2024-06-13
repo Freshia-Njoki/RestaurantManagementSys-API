@@ -1,6 +1,6 @@
 
 import { Context } from "hono";
-import { orderStatusService, getOrderStatusService, createOrderStatusService, updateOrderStatusService, deleteOrderStatusService } from "./orders-status.service";
+import { orderStatusService, getOrderStatusService, createOrderStatusService, updateOrderStatusService, deleteOrderStatusService, getMoreOrderStatusInfoService } from "./orders-status.service";
 
 export const listOrderStatus = async (c: Context) => {
     try {
@@ -80,3 +80,11 @@ export const deleteOrderStatus = async (c: Context) => {
     }
 }
 
+export const getMoreOrderStatusInfo = async(c:Context) => {
+
+    const orderStatusInfo = await getMoreOrderStatusInfoService();
+    if (orderStatusInfo == undefined) {
+        return c.text("orderStatusInfo not found", 404);
+    }
+    return c.json(orderStatusInfo, 200);
+}
