@@ -430,13 +430,13 @@ POST http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "Waruitha",
+    "username": "Njoki",
     "password": "pass123"
 }
-###
-GET http://localhost:8000/api/orderMenuItems
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjM0MTI3fQ.hZfXmEDCm96oEZvP0kWSjfXZ7_HLkRCau8EiZBimZuo
 
+### 
+GET http://localhost:8000/api/orderMenuItems
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mjc3MzkwfQ.dCBiIsX46RJLxVFo7pzqYElypDqNS842nihPJBxpBXk
 ###
 GET http://localhost:8000/api/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXYXJ1aXRoYSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MjM0MTI3fQ.hZfXmEDCm96oEZvP0kWSjfXZ7_HLkRCau8EiZBimZuo
@@ -462,6 +462,8 @@ GET http://localhost:8000/api/activeMenuItems
 GET http://localhost:8000/api/menuInfo
 ###
 GET http://localhost:8000/api/menuOrdersInfo
+###
+GET http://localhost:8000/api/OrderInfo
 
 
 

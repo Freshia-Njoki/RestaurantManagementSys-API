@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { OrdersService, getOrderService, createOrderService, updateOrderService, deleteOrderService, filterOrderService } from "./orders.service";
+import { OrdersService, getOrderService, createOrderService, updateOrderService, deleteOrderService, getMoreOrdersInfoService } from "./orders.service";
 
 export const listOrders = async (c: Context) => {
     try {
@@ -79,13 +79,22 @@ export const deleteOrder = async (c: Context) => {
     }
 }
 
-export const filterOrderInfo = async(c:Context) => {
-    const id = parseInt(c.req.param("id"));
-    if (isNaN(id)) return c.text("Invalid ID", 400);
+// export const filterOrderInfo = async(c:Context) => {
+//     const id = parseInt(c.req.param("id"));
+//     if (isNaN(id)) return c.text("Invalid ID", 400);
 
-    const orderInfo = await filterOrderService(id);
-    if (orderInfo == undefined) {
-        return c.text("Order not found", 404);
+//     const orderInfo = await filterOrderService(id);
+//     if (orderInfo == undefined) {
+//         return c.text("Order not found", 404);
+//     }
+//     return c.json(orderInfo, 200);
+// }
+
+export const getMoreOrderInfo = async(c:Context) => {
+
+    const ordersInfo = await getMoreOrdersInfoService();
+    if (ordersInfo == undefined) {
+        return c.text("ordersInfo not found", 404);
     }
-    return c.json(orderInfo, 200);
+    return c.json(ordersInfo, 200);
 }

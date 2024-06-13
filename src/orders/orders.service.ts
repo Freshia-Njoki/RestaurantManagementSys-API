@@ -33,9 +33,36 @@ export const deleteOrderService = async (id: number) => {
 }
 
 
-export const filterOrderService = async (id: number) => {
-    return await db.select({
-        order_menu_item: OrdersTable.order_menu_item,
-        OrderStatusTable: OrderStatusTable.status_catalog
-    }).from(OrdersTable).rightJoin(OrderStatusTable, eq(OrdersTable.id, OrderStatusTable.order_id))
-}
+// export const filterOrderService = async (id: number) => {
+//     return await db.select({
+//         order_menu_item: OrdersTable.order_menu_item,
+//         OrderStatusTable: OrderStatusTable.status_catalog
+//     }).from(OrdersTable).rightJoin(OrderStatusTable, eq(OrdersTable.id, OrderStatusTable.order_id))
+// }
+
+
+export const getMoreOrdersInfoService = async () => {
+    return await db.query.OrdersTable.findMany({
+      columns: {
+        created_at: true
+      },
+      with: {
+        users: {
+          columns: {
+            contact_phone: true,
+            confirmation_code: true
+          },
+          with: {
+            order: {
+              columns: {
+               driver: true
+              }
+            }
+          }
+        }
+      },
+    });
+  
+  
+  }
+  
