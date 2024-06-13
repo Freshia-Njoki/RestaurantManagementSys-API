@@ -38,7 +38,7 @@ export const deleteCityService = async (id: number) => {
   return "City deleted successfully";
 };
 
-export const filterCityService = async (id: number) => {
+export const getMoreCityInfoService = async (id: number) => {
   return await db.query.CitiesTable.findMany({
     columns: {
       address: false

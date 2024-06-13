@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { CommentsService, getCommentService, createCommentService, updateCommentService, deleteCommentService } from "./comment.service";
+import { CommentsService, getCommentService, createCommentService, updateCommentService, deleteCommentService, getMoreCommentsInfoService } from "./comment.service";
 
 export const listComment = async (c: Context) => {
     try {
@@ -77,4 +77,13 @@ export const deleteComment = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+export const getMoreCommentsInfo = async(c:Context) => {
+
+    const commentsInfo = await getMoreCommentsInfoService();
+    if (commentsInfo == undefined) {
+        return c.text("comments not found", 404);
+    }
+    return c.json(commentsInfo, 200);
 }

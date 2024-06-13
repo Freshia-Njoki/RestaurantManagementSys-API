@@ -31,3 +31,28 @@ export const deleteCommentService = async (id: number) => {
     await db.delete(CommentsTable).where(eq(CommentsTable.id, id))
     return "Comment deleted successfully";
 }
+
+export const getMoreCommentsInfoService = async () => {
+    return await db.query.CommentsTable.findMany({
+      columns: {
+        comment_text: true
+      },
+      with: {
+        order: {
+          columns: {
+            order_menu_item: true
+          },
+          with: {
+            users: {
+              columns: {
+                name: true,
+              }
+            }
+          }
+        }
+      },
+    });
+  
+  
+  }
+  

@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listComment, getComment, createComment, updateComment, deleteComment } from "./comment.controller"
+import { listComment, getComment, createComment, updateComment, deleteComment, getMoreCommentsInfo} from "./comment.controller"
 import { zValidator } from "@hono/zod-validator";
 import { commentSchema } from "../validators";
 import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,6 @@ commentRouter.post("/comment",userRoleAuth, zValidator('json', commentSchema, (r
 commentRouter.put("/comment/:id",userRoleAuth, updateComment)
 
 commentRouter.delete("/comment/:id",adminRoleAuth, deleteComment)
+commentRouter.get("/commentInfo", getMoreCommentsInfo)
 
 //https:domai.com/api/comment?limit=10

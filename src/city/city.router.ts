@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listCities, getCity, createCity, updateCity, deleteCity, filterCityInfo } from "./city.controller"
+import { listCities, getCity, createCity, updateCity, deleteCity, getMoreCityInfo } from "./city.controller"
 import { zValidator } from "@hono/zod-validator";
 import { citySchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -19,6 +19,6 @@ cityRouter.post("/city", adminRoleAuth,zValidator('json', citySchema, (result, c
 cityRouter.put("/city/:id",adminRoleAuth, updateCity)
 
 cityRouter.delete("/city/:id",adminRoleAuth, deleteCity)
-cityRouter.get("/cityInfo/:id", filterCityInfo)
+cityRouter.get("/cityInfo/:id", getMoreCityInfo)
 
 //https:domain.com/api/city?limit=10
