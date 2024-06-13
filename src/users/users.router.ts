@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listUsers, getUser, createUser, updateUser, deleteUser } from "./users.controller"
+import { listUsers, getUser, createUser, updateUser, deleteUser, getMoreUsersInfo } from "./users.controller"
 import { zValidator } from "@hono/zod-validator";
 import { userSchema } from "../validators";
 import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
@@ -20,4 +20,5 @@ userRouter.post("/users",userRoleAuth, zValidator('json', userSchema, (result, c
 userRouter.put("/users/:id", userRoleAuth, updateUser)
 
 userRouter.delete("/users/:id", userRoleAuth,  deleteUser)
+userRouter.get("/usersInfo", getMoreUsersInfo)
 

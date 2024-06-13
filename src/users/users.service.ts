@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import {TIUser,TSUser, UsersTable } from "../drizzle/schema";
+import { TIUser, TSUser, UsersTable } from "../drizzle/schema";
 
 export const usersService = async (limit?: number): Promise<TSUser[] | null> => {
     if (limit) {
@@ -30,4 +30,28 @@ export const updateUserService = async (id: number, user: TIUser) => {
 export const deleteUserService = async (id: number) => {
     await db.delete(UsersTable).where(eq(UsersTable.id, id))
     return "User deleted successfully";
+}
+
+export const getMoreUsersInfoService = async () => {
+    return await db.query.UsersTable.findMany({
+        columns: {
+            name: true,
+            contact_phone: true
+        },
+        with: {
+            address: {
+                columns: {
+                    street_address_1: true
+                },
+                with: {
+                    orders: {
+                        columns: {
+                            order_status: true
+                        }
+
+                    },
+                },
+            },
+        },
+})
 }

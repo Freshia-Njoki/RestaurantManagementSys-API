@@ -1,6 +1,6 @@
 
 import { Context } from "hono";
-import { usersService, getUserService, createUserService, updateUserService, deleteUserService } from "./users.service";
+import { usersService, getUserService, createUserService, updateUserService, deleteUserService,getMoreUsersInfoService } from "./users.service";
 
 export const listUsers = async (c: Context) => {
     try {
@@ -78,4 +78,14 @@ export const deleteUser = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+
+export const getMoreUsersInfo = async(c:Context) => {
+
+    const usersInfo = await getMoreUsersInfoService();
+    if (usersInfo == undefined) {
+        return c.text("usersInfo not found", 404);
+    }
+    return c.json(usersInfo, 200);
 }

@@ -473,8 +473,8 @@ GET http://localhost:8000/api/restuarantOwnerInfo
 ###
 GET http://localhost:8000/api/statesInfo
 ###
-GET http://localhost:8000/api/statesInfo
 
+GET http://localhost:8000/api/usersInfo
 
 
 
