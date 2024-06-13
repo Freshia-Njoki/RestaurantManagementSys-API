@@ -34,10 +34,30 @@ export const deleteAddressService = async (id: number) => {
 }
 
 
-export const getAddressInfo = async (): Promise<TSAddress[] | null> => {
-    const results:any = await db.select({
-        delivery_instructions: AddressesTable.delivery_instructions,
-        address: AddressesTable.street_address_1
-    }).from(AddressesTable);
-     return results
+export const getAddressInfoService = async () => {
+    return await db.query.AddressesTable.findMany({
+        columns: {
+            street_address_1: true,
+            delivery_instructions: true
+        },
+        with: {
+            users: {
+                columns: {
+                    name: true
+                }
+            },
+            city: {
+                columns: {
+                    state: true
+                }
+            },
+            orders: {
+                columns: {
+                    price: true
+                }
+            }
+        },
+        
+});
+
 };
