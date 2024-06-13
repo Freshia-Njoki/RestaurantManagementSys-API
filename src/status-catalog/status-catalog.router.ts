@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listStatusCatalogs, getStatusCatalog, createStatusCatalog, updateStatusCatalog, deleteStatusCatalog } from "./status-catalog.controller"
+import { listStatusCatalogs, getStatusCatalog, createStatusCatalog, updateStatusCatalog, deleteStatusCatalog, getMoreStatusCatalogInfo} from "./status-catalog.controller"
 import { zValidator } from "@hono/zod-validator";
 import { statusCatalogSchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,6 @@ statusCatalogRouter.post("/statusCatalog",adminRoleAuth, zValidator('json', stat
 statusCatalogRouter.put("/statusCatalog/:id", adminRoleAuth, updateStatusCatalog)
 
 statusCatalogRouter.delete("/statusCatalog/:id",adminRoleAuth, deleteStatusCatalog)
+statusCatalogRouter.get("/statusCatalog", getMoreStatusCatalogInfo)
 
 //https:domai.com/api/StatusCatalog?limit=10

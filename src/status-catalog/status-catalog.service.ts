@@ -31,3 +31,16 @@ export const deleteStatusCatalogService = async (id: number) => {
     await db.delete(StatusCatalogTable).where(eq(StatusCatalogTable.id, id))
     return "StatusCatalog deleted successfully";
 }
+
+
+export const getMoreStatusCatalogInfoService = async () => {
+    return await db.query.StatusCatalogTable.findMany({
+      columns: {
+        name: true,
+        order_status:true
+      }
+    });
+  
+  
+  }
+  

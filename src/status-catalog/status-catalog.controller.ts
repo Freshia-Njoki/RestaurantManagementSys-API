@@ -1,6 +1,6 @@
 
 import { Context } from "hono";
-import { StatusCatalogsService, getStatusCatalogService, createStatusCatalogService, updateStatusCatalogService, deleteStatusCatalogService } from "./status-catalog.service";
+import { StatusCatalogsService, getStatusCatalogService, createStatusCatalogService, updateStatusCatalogService, deleteStatusCatalogService, getMoreStatusCatalogInfoService } from "./status-catalog.service";
 
 export const listStatusCatalogs = async (c: Context) => {
     try {
@@ -78,4 +78,13 @@ export const deleteStatusCatalog = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+export const getMoreStatusCatalogInfo = async(c:Context) => {
+
+    const statusCatalogInfo = await getMoreStatusCatalogInfoService();
+    if (statusCatalogInfo == undefined) {
+        return c.text("statusCatalogInfo not found", 404);
+    }
+    return c.json(statusCatalogInfo, 200);
 }
