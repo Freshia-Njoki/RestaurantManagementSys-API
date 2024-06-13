@@ -31,3 +31,23 @@ export const deleteStateService = async (id: number) => {
     await db.delete(StatesTable).where(eq(StatesTable.id, id))
     return "State deleted successfully";
 }
+
+
+export const getMoreStateInfoService = async () => {
+    return await db.query.StatesTable.findMany({
+      columns: {
+        name: true
+      },
+      with: {
+        city: {
+          columns: {
+            state: true,
+            restaurant: true
+          }
+        }
+      },
+    });
+  
+  
+  }
+  

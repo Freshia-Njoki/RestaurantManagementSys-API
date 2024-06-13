@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listStates, getState, createState, updateState, deleteState } from "./state.controller"
+import { listStates, getState, createState, updateState, deleteState, getMoreStateInfo } from "./state.controller"
 import { zValidator } from "@hono/zod-validator";
 import { stateSchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -19,4 +19,5 @@ stateRouter.post("/states",adminRoleAuth, zValidator('json', stateSchema, (resul
 stateRouter.put("/states/:id",adminRoleAuth, updateState)
 
 stateRouter.delete("/states/:id",adminRoleAuth, deleteState)
+stateRouter.get("/statesInfo", getMoreStateInfo)
 
