@@ -6,6 +6,7 @@ import {
   createRestaurantService,
   updateRestaurantService,
   deleteRestaurantService,
+  getMoreRestaurantsInfoService
 } from "./restaurant.services";
 
 export const listRestaurants = async (c: Context) => {
@@ -99,3 +100,12 @@ export const RestaurantsInfo = async (c: Context) => {
     return c.json({error:error ?.message},400)
   }
 };
+
+export const getMoreRestaurantsInfo = async(c:Context) => {
+
+  const restaurantsInfo = await getMoreRestaurantsInfoService();
+  if (restaurantsInfo == undefined) {
+      return c.text("restaurantsInfo not found", 404);
+  }
+  return c.json(restaurantsInfo, 200);
+}

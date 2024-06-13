@@ -46,3 +46,24 @@ export const getRestaurantsInfo = async (id:number): Promise<TSRestaurant[] | nu
      return results
 };
 
+
+export const getMoreRestaurantsInfoService = async () => {
+    return await db.query.RestaurantsTable.findMany({
+      columns: {
+        name: true,
+        city: true,
+        street_address: true,
+        restaurant_owner: true
+      },
+      with: {
+        menu_item: {
+          columns: {
+            description: true,
+            price: true
+          }
+        }
+      },
+    }); 
+  }
+  
+
