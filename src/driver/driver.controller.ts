@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { driversService, getDriverService, createDriverService, updateDriverService, deleteDriverService } from "./driver.service";
+import { driversService, getDriverService, createDriverService, updateDriverService, deleteDriverService, getMoreDriverInfoService } from "./driver.service";
 
 export const listDrivers = async (c: Context) => {
     try {
@@ -77,4 +77,13 @@ export const deleteDriver = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+export const getMoreDriverInfo = async(c:Context) => {
+
+    const driversInfo = await getMoreDriverInfoService();
+    if (driversInfo == undefined) {
+        return c.text("driversInfo not found", 404);
+    }
+    return c.json(driversInfo, 200);
 }

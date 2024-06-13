@@ -31,3 +31,29 @@ export const deleteDriverService = async (id: number) => {
     await db.delete(DriversTable).where(eq(DriversTable.id, id))
     return "Driver deleted successfully";
 }
+
+
+export const getMoreDriverInfoService = async () => {
+    return await db.query.DriversTable.findMany({
+      columns: {
+        delivering: true
+      },
+      with: {
+        users: {
+          columns: {
+            name: true
+          },
+          with: {
+            order: {
+              columns: {
+                order_status: true
+              }
+            }
+          }
+        }
+      },
+    });
+  
+  
+  }
+  

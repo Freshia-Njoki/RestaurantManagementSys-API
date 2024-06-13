@@ -454,6 +454,8 @@ GET http://localhost:8000/api/categoryInfo/1
 GET http://localhost:8000/api/cityInfo/1
 ###
 GET http://localhost:8000/api/commentInfo
+###
+GET http://localhost:8000/api/driverInfo
 
 
 
