@@ -31,3 +31,29 @@ export const deleteOrderMenuItemService = async (id: number) => {
     await db.delete(OrderMenuItemsTable).where(eq(OrderMenuItemsTable.id, id))
     return "OrderMenuItem deleted successfully";
 }
+
+export const getMoreMenuOrdersInfoService = async () => {
+    return await db.query.OrderMenuItemsTable.findMany({
+      columns: {
+        menu_item: true,
+        price: true
+      },
+      with: {
+        orders: {
+          columns: {
+            order_status: true
+          },
+          with: {
+            comment : {
+              columns: {
+               is_praise: true
+              }
+            }
+          }
+        }
+      },
+    });
+  
+  
+  }
+  

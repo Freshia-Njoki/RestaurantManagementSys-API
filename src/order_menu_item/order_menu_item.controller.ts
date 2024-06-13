@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { OrderMenuItemsService, getOrderMenuItemService, createOrderMenuItemService, updateOrderMenuItemService, deleteOrderMenuItemService } from "./order_menu_item.service";
+import { OrderMenuItemsService, getOrderMenuItemService, createOrderMenuItemService, updateOrderMenuItemService, deleteOrderMenuItemService,getMoreMenuOrdersInfoService } from "./order_menu_item.service";
 
 export const listOrderMenuItems = async (c: Context) => {
     try {
@@ -77,4 +77,13 @@ export const deleteOrderMenuItem = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+export const getMenuOrdersInfo = async(c:Context) => {
+
+    const menuOrdersInfo = await getMoreMenuOrdersInfoService();
+    if (menuOrdersInfo == undefined) {
+        return c.text("driversInfo not found", 404);
+    }
+    return c.json(menuOrdersInfo, 200);
 }
