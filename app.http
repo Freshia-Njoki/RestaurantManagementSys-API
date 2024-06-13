@@ -456,6 +456,10 @@ GET http://localhost:8000/api/cityInfo/1
 GET http://localhost:8000/api/commentInfo
 ###
 GET http://localhost:8000/api/driverInfo
+###
+GET http://localhost:8000/api/activeMenuItems
+###
+GET http://localhost:8000/api/menuInfo
 
 
 

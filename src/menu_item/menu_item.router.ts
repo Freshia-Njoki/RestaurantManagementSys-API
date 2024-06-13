@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listmenuItem, getMenu, createMenu, updateMenu, deleteMenu } from "./menu_item.controller"
+import { listmenuItem, getMenu, createMenu, updateMenu, deleteMenu, listActiveMenuItems, getMoreMenuInfo} from "./menu_item.controller"
 import { zValidator } from "@hono/zod-validator";
 import { menuItemSchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,7 @@ menuRouter.post("/menuItem",adminRoleAuth, zValidator('json', menuItemSchema, (r
 menuRouter.put("/menuItem/:id",adminRoleAuth, updateMenu)
 
 menuRouter.delete("/menuItem/:id",adminRoleAuth, deleteMenu)
+menuRouter.get("/activeMenuItems",listActiveMenuItems)
+menuRouter.get("/menuInfo",getMoreMenuInfo)
 
 //https:domai.com/api/menuItem?limit=10

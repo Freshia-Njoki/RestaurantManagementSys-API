@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { menuItemService, getmenuItemService, getActiveMenuItemsService, createmenuItemService, updatemenuItemService, deletemenuItemService } from "./menu_item.service";
+import { menuItemService, getmenuItemService, getActiveMenuItemsService, createmenuItemService, updatemenuItemService, deletemenuItemService, getMoreMenuInfoService } from "./menu_item.service";
 
 export const listmenuItem = async (c: Context) => {
     try {
@@ -86,3 +86,11 @@ export const listActiveMenuItems = async (c: Context) => {
 
     return c.json(data, 200);
 };
+
+export const getMoreMenuInfo = async(c:Context) => {
+    const menuInfo = await getMoreMenuInfoService();
+    if (menuInfo == undefined) {
+        return c.text("menuInfo not found", 404);
+    }
+    return c.json(menuInfo, 200);
+}

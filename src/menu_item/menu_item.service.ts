@@ -40,3 +40,32 @@ export const getActiveMenuItemsService = async (): Promise<TSMenuItem[] | null> 
         where: eq(MenuItemsTable.active, true)
     });
 };
+
+export const getMoreMenuInfoService = async () => {
+    return await db.query.MenuItemsTable.findMany({
+      columns: {
+        description: true
+      },
+      with: {
+        restaurant: {
+          columns: {
+            name: true
+          },
+          with: {
+            menu_item:{
+                columns:{
+                    order_menu_item:true
+                }
+            },
+            orders: {
+              columns: {final_price:true
+              }
+            }
+          }
+        }
+      },
+    });
+  
+  
+  }
+  
