@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listRestaurantOwners, getRestuarantOwner, createRestuarantOwner, updateRestuarantOwner, deleteRestuarantOwner } from "./restaurant_owner.controller"
+import { listRestaurantOwners, getRestuarantOwner, createRestuarantOwner, updateRestuarantOwner, deleteRestuarantOwner, getMoreRestaurantOwnerInfo } from "./restaurant_owner.controller"
 import { zValidator } from "@hono/zod-validator";
 import { restuarantOwnerSchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -19,5 +19,6 @@ restuarantOwnerRouter.post("/restuarantOwner",adminRoleAuth, zValidator('json', 
 restuarantOwnerRouter.put("/restuarantOwner/:id",adminRoleAuth, updateRestuarantOwner)
 
 restuarantOwnerRouter.delete("/restuarantOwner/:id",adminRoleAuth, deleteRestuarantOwner)
+restuarantOwnerRouter.get("/restuarantOwnerInfo",getMoreRestaurantOwnerInfo)
 
 //https:domai.com/api/RestuarantOwner?limit=10

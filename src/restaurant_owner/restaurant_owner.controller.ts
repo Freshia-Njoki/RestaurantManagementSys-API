@@ -1,6 +1,6 @@
 
 import { Context } from "hono";
-import { restuarantOwnersService, getRestuarantOwnerService, createRestuarantOwnerService, updateRestuarantOwnerService, deleteRestuarantOwnerService } from "./restaurant_owner.services";
+import { restuarantOwnersService, getRestuarantOwnerService, createRestuarantOwnerService, updateRestuarantOwnerService, deleteRestuarantOwnerService, getMoreRestaurantOwnerInfoService } from "./restaurant_owner.services";
 
 export const listRestaurantOwners = async (c: Context) => {
     try {
@@ -78,4 +78,13 @@ export const deleteRestuarantOwner = async (c: Context) => {
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
+}
+
+export const getMoreRestaurantOwnerInfo = async(c:Context) => {
+
+    const restaurantOwnerInfo = await getMoreRestaurantOwnerInfoService();
+    if (restaurantOwnerInfo == undefined) {
+        return c.text("restaurantOwnerInfo not found", 404);
+    }
+    return c.json(restaurantOwnerInfo, 200);
 }

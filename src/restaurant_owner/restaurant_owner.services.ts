@@ -31,3 +31,23 @@ export const deleteRestuarantOwnerService = async (id: number) => {
     await db.delete(RestaurantOwnerTable).where(eq(RestaurantOwnerTable.id, id))
     return "RestuarantOwner deleted successfully";
 }
+
+
+export const getMoreRestaurantOwnerInfoService = async () => {
+    return await db.query.RestaurantOwnerTable.findMany({
+      columns: {
+        restaurant: true
+      },
+      with: {
+        restaurants: {
+          columns: {
+            city: true,
+            restaurant_owner: true
+          }
+        }
+      },
+    });
+  
+  
+  }
+  
