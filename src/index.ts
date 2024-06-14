@@ -48,8 +48,12 @@ app.use('*', registerMetrics)
 app.get('/', (c) => {
   return c.html(
     html`
-      <h1>Welcome to Restaurant Management API!</h1>
-      <li>Feel free to query my API😎</li>`
+      <h1>Freshias' Restaurant Management API</h1>
+<p>Welcome!🥳 This API provides programmatic access to functionalities for managing restaurant operations😎</p>
+<ul>
+  <li>Automate tasks and streamline workflows.</li>
+  <li>Develop custom applications to enhance your restaurant operations.</li>
+</ul>`
   )
 })
 
