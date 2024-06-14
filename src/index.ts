@@ -48,14 +48,67 @@ app.use('*', registerMetrics)
 app.get('/', (c) => {
   return c.html(
     html`
-      <h1>Freshias' Restaurant Management API</h1>
-<p>Welcome!🥳 This API provides programmatic access to functionalities for managing restaurant operations😎</p>
-<ul>
-  <li>Automate tasks and streamline workflows.</li>
-  <li>Develop custom applications to enhance your restaurant operations.</li>
-</ul>`
+      <style>
+        body {
+          font-family: 'Helvetica Neue', Arial, sans-serif;
+          background-color: #f7f9fc;
+          margin: 0;
+          padding: 20px;
+          color: #333;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+        .container {
+          background: #ffffff;
+          padding: 40px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          max-width: 600px;
+          width: 100%;
+        }
+        h1 {
+          color: #2c3e50;
+          font-size: 2.5em;
+          margin-bottom: 0.5em;
+        }
+        p {
+          font-size: 1.2em;
+          margin-bottom: 1.5em;
+          color: #555;
+        }
+        ul {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+        }
+        li {
+          font-size: 1em;
+          background: #ecf0f1;
+          margin: 10px 0;
+          padding: 15px;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+        }
+        li:hover {
+          background-color: #dce1e3;
+        }
+      </style>
+      <div class="container">
+        <h1>Freshias' Restaurant Management API</h1>
+        <p>Welcome!🥳 This API provides programmatic access to functionalities for managing restaurant operations😎</p>
+        <ul>
+          <li>Automate tasks and streamline workflows.</li>
+          <li>Develop custom applications to enhance your restaurant operations.</li>
+        </ul>
+      </div>
+    `
   )
 })
+
+
 
 app.get('/ok', (c) => {
   return c.text('The server is running📢😏😏😏!')
